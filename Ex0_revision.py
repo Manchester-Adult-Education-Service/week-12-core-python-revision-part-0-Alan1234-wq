@@ -162,6 +162,11 @@ weekly_sales = [120.50, 155.75, 95.00, 180.25, 130.50]
 # 5. Print both the 'total_sales' and 'average_sale', formatted to two decimal places.
 
 # Write your code below:
+total_sales = 0
+weekly_sales = [120.50,155.75,95.00,180.25,130.50]
+for i in weekly_sales:
+    total_sales += total_sales + i
+print(total_sales)
 
 
 # -------------------------------------------
