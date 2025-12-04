@@ -39,8 +39,8 @@ print("-------------------------------------------\n"
 # Write your code below:
 price = 45
 VAT_RATE = 0.2
-total_cost = f"final total cost{price + (price*VAT_RATE):.2f}"
-print(total_cost)
+total_cost = price + (price*VAT_RATE)
+print(f"final total {total_cost}")
 
 # -------------------------------------------
 # CHECKPOINT
@@ -73,8 +73,13 @@ print("\n-------------------------------------------\n"
 # 5. Otherwise (if total_cost is 60 or more), print "Purchase denied: Budget severely exceeded."
 
 # Write your code below:
-
-
+budget = 50
+if total_cost <= budget:
+    print("Purchase approved:Within budget")
+elif total_cost > budget and total_cost < 60 :
+    print("Warning: Purchase exceeds budget but is manageable")
+else:
+    print("Purchase denied: Budget severely exceeded.")
 # -------------------------------------------
 # CHECKPOINT
 # -------------------------------------------
