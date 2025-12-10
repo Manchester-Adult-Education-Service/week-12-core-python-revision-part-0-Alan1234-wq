@@ -115,12 +115,16 @@ print("\n-------------------------------------------\n"
 
 def calculate_area():
     # Insert try/except block here
+    try:
     # Remember to handle the input() and int() conversions inside the try block
-    length = int(input("Enter rectangle length: "))
-    width = int(input("Enter rectangle width: "))
-    area = length * width
-    return area
+      length = int(input("Enter rectangle length: "))
+      width = int(input("Enter rectangle width: "))
+      area = length * width
+      return area
     # Insert except block here
+    except ValueError:
+        print("Error:Please enter only numerical value.")
+        return 0
 
 # Call the function:
 rectangle_area = calculate_area()
@@ -164,10 +168,15 @@ weekly_sales = [120.50, 155.75, 95.00, 180.25, 130.50]
 # Write your code below:
 total_sales = 0
 weekly_sales = [120.50,155.75,95.00,180.25,130.50]
-for i in weekly_sales:
-    total_sales += total_sales + i
+for sale in weekly_sales:
+    total_sales += sale
 print(total_sales)
 
+num_days = len(weekly_sales)
+average_sale = total_sales / num_days
+
+print(f"Total Sales: £{total_sales:.2f}")
+print(f"Average Daily Sale:£{average_sale:.2f}")
 
 # -------------------------------------------
 # CHECKPOINT
@@ -207,8 +216,12 @@ product_catalogue = {
 # 4. If the code does not exist, print "Error: Product code not found."
 
 # Write your code below:
-
-
+product_code_input = input("Enter a product code(e.g.,PRD002):").upper()
+if product_code_input in product_catalogue:
+    price_found = product_catalogue[product_code_input]
+    print(f"Code:{product_code_input}, Price:£{price_found:.2f}]")
+else:
+    print("Error: Product code not found.")
 # -------------------------------------------
 # CHECKPOINT
 # -------------------------------------------
@@ -257,7 +270,16 @@ print("\n-------------------------------------------\n"
     + "-------------------------------------------")
 
 # Write your code below:
+secret_colour = "BLUE"
+guess = ""
 
+while guess.upper() != secret_colour:
+    guess = input("Guess the secret colour:")
+    if guess.upper() == secret_colour:
+        print("you guessed it!")
+        break
+    else:
+        print("Try again")
 
 # -------------------------------------------
 
@@ -281,7 +303,11 @@ data_set = [3, 12, 5, 8, 17, 24, 9, 10]
 even_numbers = []
 
 # Write your code below:
-
+for number in data_set:
+    if number % 2 == 0:
+        even_numbers.append(number)
+print(f"Original dataset: {data_set}")
+print(f"even numbers found:{even_numbers}")
 
 # -------------------------------------------
 # ADVANCED ACTIVITY: Combining Concepts
@@ -303,18 +329,27 @@ def process_order(order_dict, catalogue):
     grand_total = 0
     print("--- Processing Order ---")
     # Insert code to loop through the order and calculate the total here
+    for product_code, quantity in order_dict.items():
+        if product_code in catalogue:
+           price = catalogue[product_code]
+           subtotal = price + quantity
+           grand_total += subtotal
+           print(f"{product_code} (x{quantity}): £{subtotal:.2f}")
+        else:
+           print(f"Warning: Product {product_code} not found in catalogue. Skipping.")
+    
     return grand_total
-
+    
 # Test the function:
 user_order = {
     'PRD001': 2,
     'PRD003': 5,
     'PRD099': 1
 }
-
+final_bill = process_order(user_order, product_catalogue)
 # Call the function and print the final bill (formatted to two decimal places):
 # Write your code below:
-
+print(f"\nGRAND TOTAL: £{final_bill:.2f}")
 
 # -------------------------------------------
 # FINAL CHECKPOINT
